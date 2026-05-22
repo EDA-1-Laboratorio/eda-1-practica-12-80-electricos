@@ -82,11 +82,14 @@ def es_valida(tablero: list) -> bool:
     n = len(tablero)
 
     # PASO 1 – Doble bucle sobre todos los pares (i, j) con i < j.
+    for i in range (n):
+        for j in range (i + 1, n):
 
     # PASO 2 – Verifica las dos condiciones de conflicto.
     #   Condición columna:  tablero[i] == tablero[j]
     #   Condición diagonal: abs(tablero[i] - tablero[j]) == abs(i - j)
     #   Si alguna se cumple, retorna False inmediatamente.
+            
 
     # PASO 3 – Si el bucle termina sin conflictos, retorna True.
 
