@@ -221,16 +221,21 @@ def escaleras_recursivo(n: int) -> int:
     """
     # PASO 1 – Validación.
     #   Si n < 0, lanza ValueError.
-
+    if n<0:
+        raise ValueError("n debe ser mayor ó igual a 0")
     # PASO 2 – Casos base.
     #   n == 0 → 1 (convención: una forma de no moverse)
     #   n == 1 → 1
     #   n == 2 → 2  (puedes dejarlo en el caso recursivo si tus casos base
     #               son n=0 y n=1; comprueba que funcione antes de omitirlo)
-
+    if n==0:
+        return 1
+    if n==1:
+        return 1
+    if n==2:
+        return 2
     # PASO 3 – Caso recursivo: misma estructura que fib_recursivo.
-
-    pass  # TODO
+    return escaleras_recursivo(n-1)+escaleras_recursivo(n-2)
 
 
 def escaleras_memo(n: int, memo: dict = None) -> int:
@@ -244,8 +249,24 @@ def escaleras_memo(n: int, memo: dict = None) -> int:
     """
     # Sigue los mismos pasos que fib_memo:
     # inicializa memo → valida n → casos base → revisa caché → recursivo+guardado.
-
-    pass  # TODO
+    if memo is None:
+        memo={}
+    # PASO 1 – Validación de n<0.
+    if n<0:
+        raise ValueError("n debe ser mayor ó igual a 0")
+    # PASO 2 – Casos base:
+    if n==0:
+        return 1
+    if n==1:
+        return 1
+    if n==2:
+        return 2
+    # PASO 3 – Revisión de caché.
+    if n in memo:
+        return memo[n]
+    # PASO 5 – Caso recursivo con guardado.
+    memo[n]=escaleras_memo(n-1, memo)+escaleras_memo(n-2, memo) 
+    return memo[n]
 
 
 def escaleras_bottom_up(n: int) -> int:
@@ -259,8 +280,27 @@ def escaleras_bottom_up(n: int) -> int:
         (o i >= 2 si tu caso base es solo tabla[0] y tabla[1]).
     """
     # Sigue la misma estructura que fib_bottom_up.
-
-    pass  # TODO
+    # PASO 1 – Validación de n.
+    if n<0:
+        raise ValueError("n debe ser mayor ó igual a 0")
+    # PASO 2 – Casos base
+    if n==0:
+        return 1
+    if n==1:
+        return 1
+    if n==2:
+        return 2
+    # PASO 3 – Crea la tabla:
+    tabla=[0]*(n+1)
+    # PASO 4 – Inicializa los casos base en la tabla.
+    tabla[0]=1
+    tabla[1]=1
+    tabla[2]=2
+    # PASO 5 – Bucle de llenado de izquierda a derecha.
+    for i in range(3, n + 1):
+        tabla[i] = tabla[i-1] + tabla[i-2]
+    # PASO 6 – Devuelve tabla[n].
+    return tabla[n]
 
 
 # ============================================================
