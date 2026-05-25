@@ -89,8 +89,8 @@ def es_valida(tablero: list) -> bool:
     #   Condición columna:  tablero[i] == tablero[j]
     #   Condición diagonal: abs(tablero[i] - tablero[j]) == abs(i - j)
     #   Si alguna se cumple, retorna False inmediatamente.
-            if tablero[i] == tablero[j] or abs(tablero[i] - tablero[j]) == abs(i-j)
-            return False 
+            if tablero[i] == tablero[j] or abs(tablero[i] - tablero[j]) == abs(i-j):
+               return False 
         
     # PASO 3 – Si el bucle termina sin conflictos, retorna True.
 
