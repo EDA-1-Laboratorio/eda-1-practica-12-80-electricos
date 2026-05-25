@@ -212,13 +212,13 @@ def resolver_n_reinas(n: int, fila: int = 0,
 
     #// PASO 3 – Caso recursivo: prueba cada columna de 0 a n-1.//
     # //  Para cada col, verifica es_segura → coloca → recursa → backtrack.
-   for col in range(n):
-       if es_segura(tablero, fila, col):
-           tablero[fila]= col 
-           resiltado = resolver_n_reinas(n, fila + 1, tablero)
-           if resultado is not None:
-               return resultado
-            tablero[fila] = -1
+    for col in range(n):
+        if es_segura(tablero,fila,col):
+            tablero[fila]=col
+            resultado=resolver_n_reinas(n,fila+1,tablero)
+            if resultado is not None:
+                return resultado
+            tablero[fila]=-1          
     
 
     # PASO 4 – Si ninguna columna funcionó, retorna None.
@@ -258,7 +258,7 @@ def imprimir_tablero(tablero: list, titulo: str = "Tablero") -> None:
                 fila_visual.append("Q")
             else: 
                 fila_visual.append(".") 
-        print("".join (fila_visual))
+        print(" ".join (fila_visual))
 
 
 # ============================================================
