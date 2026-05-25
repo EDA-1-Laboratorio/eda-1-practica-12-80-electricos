@@ -207,11 +207,18 @@ def resolver_n_reinas(n: int, fila: int = 0,
 
     # PASO 2 – Caso base de éxito.
     #   if fila == n: return tablero.copy()
-    if fila ==n:
+    if fila == n:
         return tablero.copy()
 
     #// PASO 3 – Caso recursivo: prueba cada columna de 0 a n-1.//
     # //  Para cada col, verifica es_segura → coloca → recursa → backtrack.
+   for col in range(n):
+       if es_segura(tablero, fila, col):
+           tablero[fila]= col 
+           resiltado = resolver_n_reinas(n, fila + 1, tablero)
+           if resultado is not None:
+               return resultado
+            tablero[fila] = -1
     
 
     # PASO 4 – Si ninguna columna funcionó, retorna None.
